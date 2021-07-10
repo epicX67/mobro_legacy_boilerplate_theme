@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Legacy Boilerplate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./dist/css/style.css">
+</head>
+
+<body>
+    <table cellspacing="0">
+        <tr>
+            <th>Name</th>
+            <th>Min</th>
+            <th>Current</th>
+            <th>Max</th>
+        </tr>
+
+        <tr>
+            <th id="cpu_name"></th>
+        </tr>
+        <tr>
+            <th>Usage</th>
+            <th id="cpu_usage_min"></th>
+            <th id="cpu_usage_curr"></th>
+            <th id="cpu_usage_max"></th>
+            <th style="display: none;" id="cpu_usage_unit"></th>
+        </tr>
+
+        <tr>
+            <th>Temp</th>
+            <th id="cpu_temp_min"></th>
+            <th id="cpu_temp_curr"></th>
+            <th id="cpu_temp_max"></th>
+            <th style="display: none;" id="cpu_temp_unit"></th>
+        </tr>
+
+        <tr>
+            <th>Fan Speed</th>
+            <th id="cpu_fan_min"></th>
+            <th id="cpu_fan_curr"></th>
+            <th id="cpu_fan_max"></th>
+            <th style="display: none;" id="cpu_fan_unit"></th>
+        </tr>
+
+
+        <tr>
+            <th id="gpu_name"></th>
+        </tr>
+        <tr>
+            <th>Temp</th>
+            <th id="gpu_temp_min"></th>
+            <th id="gpu_temp_curr"></th>
+            <th id="gpu_temp_max"></th>
+            <th style="display: none;" id="gpu_temp_unit"></th>
+        </tr>
+        <tr>
+            <th>Usage</th>
+            <th id="gpu_usage_min"></th>
+            <th id="gpu_usage_curr"></th>
+            <th id="gpu_usage_max"></th>
+            <th style="display: none;" id="gpu_usage_unit"></th>
+        </tr>
+        <tr>
+            <th>VRam Usage</h3>
+            <th id="vram_usage_min"></th>
+            <th id="vram_usage_curr"></th>
+            <th id="vram_usage_max"></th>
+            <th style="display: none;" id="vram_usage_unit"></th>
+        </tr>
+        <tr>
+            <th>VRam Used</th>
+            <th id="vram_used_min"></th>
+            <th id="vram_used_curr"></th>
+            <th id="vram_used_max"></th>
+            <th style="display: none;" id="vram_used_unit"></th>
+        </tr>
+        <tr>
+            <th>Fan Speed</th>
+            <th id="gpu_fan_min"></th>
+            <th id="gpu_fan_curr"></th>
+            <th id="gpu_fan_max"></th>
+            <th style="display: none;" id="gpu_fan_unit"></th>
+        </tr>
+
+
+        <tr>
+            <th id="mem_name"></th>
+        </tr>
+        <tr>
+            <th>Usage</th>
+            <th id="mem_usage_min"></th>
+            <th id="mem_usage_curr"></th>
+            <th id="mem_usage_max"></th>
+            <th style="display: none;" id="mem_usage_unit"></th>
+        </tr>
+        <tr>
+            <th>Used</th>
+            <th id="mem_used_min"></th>
+            <th id="mem_used_curr"></th>
+            <th id="mem_used_max"></th>
+            <th style="display: none;" id="mem_used_unit"></th>
+        </tr>
+    </table>
+
+    <script src="sdk.js"></script>
+    <script src="./dist/script.js"></script>
+</body>
