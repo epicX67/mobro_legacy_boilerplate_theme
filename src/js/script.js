@@ -2,9 +2,11 @@
 function onCPU_Usage() {}
 function onCPU_Temp() {}
 function onCPU_Fan() {}
+function onCPU_Clock() {}
 function onGPU_Temp() {}
 function onGPU_Usage() {}
 function onGPU_Fan() {}
+function onGPU_Clock() {}
 function onMemory_Usage() {}
 function onMemory_Used() {}
 function onVRam_Usage() {}
@@ -71,6 +73,24 @@ const Hardware = {
         ref: document.getElementById("cpu_fan_max"),
       },
     },
+    clock: {
+      unit: {
+        value: "",
+        ref: document.getElementById("cpu_clock_unit"),
+      },
+      min: {
+        value: 0,
+        ref: document.getElementById("cpu_clock_min"),
+      },
+      current: {
+        value: 0,
+        ref: document.getElementById("cpu_clock_curr"),
+      },
+      max: {
+        value: 0,
+        ref: document.getElementById("cpu_clock_max"),
+      },
+    },
   },
   GPU: {
     name: {
@@ -129,6 +149,24 @@ const Hardware = {
       max: {
         value: 0,
         ref: document.getElementById("gpu_fan_max"),
+      },
+    },
+    clock: {
+      unit: {
+        value: "",
+        ref: document.getElementById("gpu_clock_unit"),
+      },
+      min: {
+        value: 0,
+        ref: document.getElementById("gpu_clock_min"),
+      },
+      current: {
+        value: 0,
+        ref: document.getElementById("gpu_clock_curr"),
+      },
+      max: {
+        value: 0,
+        ref: document.getElementById("gpu_clock_max"),
       },
     },
     vram: {
@@ -373,6 +411,20 @@ MobroSDK.init().then(() => {
       onCPU_Fan();
     }
   });
+  MobroSDK.addChannelListener("theme_clock_speed_cpu", (data) => {
+    if (data.payload) {
+      const { unit, value, min, max } = data.payload;
+      const nMin = min ? parseInt(min) : 0;
+      const nCurr = value ? parseInt(value) : 0;
+      const nMax = max ? parseInt(max) : 0;
+      const nUnit = unit ? unit : "";
+      Hardware.update(Hardware.CPU.clock.unit, nUnit);
+      Hardware.set(Hardware.CPU.clock.min, nMin + nUnit, nMin);
+      Hardware.set(Hardware.CPU.clock.current, nCurr + nUnit, nCurr);
+      Hardware.set(Hardware.CPU.clock.max, nMax + nUnit, nMax);
+      onCPU_Clock();
+    }
+  });
   MobroSDK.addChannelListener("theme_fan_speed_gpu", (data) => {
     if (data.payload) {
       const { unit, value, min, max } = data.payload;
@@ -385,6 +437,20 @@ MobroSDK.init().then(() => {
       Hardware.set(Hardware.GPU.fan.current, nCurr + nUnit, nCurr);
       Hardware.set(Hardware.GPU.fan.max, nMax + nUnit, nMax);
       onGPU_Fan();
+    }
+  });
+  MobroSDK.addChannelListener("theme_clock_speed_gpu", (data) => {
+    if (data.payload) {
+      const { unit, value, min, max } = data.payload;
+      const nMin = min ? parseInt(min) : 0;
+      const nCurr = value ? parseInt(value) : 0;
+      const nMax = max ? parseInt(max) : 0;
+      const nUnit = unit ? unit : "";
+      Hardware.update(Hardware.GPU.clock.unit, nUnit);
+      Hardware.set(Hardware.GPU.clock.min, nMin + nUnit, nMin);
+      Hardware.set(Hardware.GPU.clock.current, nCurr + nUnit, nCurr);
+      Hardware.set(Hardware.GPU.clock.max, nMax + nUnit, nMax);
+      onGPU_Clock();
     }
   });
   MobroSDK.addChannelListener("theme_vram", (data) => {
